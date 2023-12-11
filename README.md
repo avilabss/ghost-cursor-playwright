@@ -6,30 +6,15 @@ Note! target elements rendered in the DOM will be scrolled vertically and horizo
 ### Download
 
 ```shell
-git clone https://github.com/reaz1995/ghost-cursor-playwright.git cursor
-cd cursor
-npm install
+npm i @avilabs/ghost-cursor-playwright
 ```
 
-example of usage in src/example.ts
-to run example use
-
-```shell
-npm run example
-```
-
-for wsl2 don't forget to set up display
-
-### Download as package
-
-```shell
-npm i ghost-cursor-playwright
-```
+### How to import
 
 ```typescript
-import { createCursor } from 'ghost-cursor-playwright';
-or;
-const { createCursor } = require('ghost-cursor-playwright');
+import { createCursor } from 'ghost-cursor-playwright'
+or
+const { createCursor } = require('ghost-cursor-playwright')
 ```
 
 ### How to use
@@ -37,13 +22,12 @@ const { createCursor } = require('ghost-cursor-playwright');
 Create amd attach cursor to page
 
 ```typescript
-const cursor = await createCursor(page);
+const cursor = await createCursor(page)
 ```
 
 manipulate the cursor via:
 
 ```typescript
-//move actions before execute will keep performing random move (30% chance).
 cursor.actions.move(target: string | BoundingBox | Vector, moveOptions?: moveOptions): Promise<void>;
 
 type moveOptions = {
@@ -64,6 +48,9 @@ type clickOptions = {
 // if target is given then cursor will use move function before click
 // if target is JS path string, then function will check if for sure is on correct target (sometimes rendered objects are covered in viewport by menu bar or dialogs etc.), if false will proceed fallback to native click
 
+
+// Optionally, you may also choose to move cursor randomly
+cursor.performRandomMove()
 
 ```
 
